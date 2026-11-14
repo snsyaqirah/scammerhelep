@@ -1,7 +1,7 @@
 {
   "name": "Scammer HELEPP: Scam Shield for MY",
   "short_name": "Scammer HELEPP",
-  "description": "Check suspicious WhatsApp, Telegram, SMS, and email messages claiming to be Deriv Support before you click, reply, or pay.",
+  "description": "Check suspicious WhatsApp, Telegram, SMS, and email messages claiming to be customer support, banks, or official agencies in Malaysia before you click, reply, or pay.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

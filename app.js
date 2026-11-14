@@ -1,38 +1,50 @@
-// Deriv ScamShield MY — Neo-Brutalist PWA (Challenge 03)
+// Scammer HELEPP: Scam Shield for MY — Neo-Brutalist PWA
 
 const PRESETS = {
   whatsapp_mule: {
     channel: 'whatsapp',
-    sender: '+60 11-3948 8291 (Deriv MY Desk)',
+    sender: '+60 11-3948 8291 (Customer Care MY)',
     message:
-      'Salam Sejahtera Tuan/Puan, kami dari Deriv Support Cyberjaya. Akaun trading anda telah DIBEKUKAN sementara kerana isu pengesahan BNM & LHDN. Sila buat bayaran pelepasan RM250 ke akaun DuitNow agen rasmi (Mohd Faizal - Maybank 162012993812) dalam masa 30 minit dan berikan 6-digit OTP untuk elak baki wang anda hangus. Semak di http://deriv-my-verify.xyz sekarang.'
+      'Salam Sejahtera Tuan/Puan, kami dari Unit Keselamatan Akaun. Akaun anda telah DIBEKUKAN sementara kerana isu pengesahan BNM & LHDN. Sila buat bayaran pelepasan RM250 ke akaun DuitNow agen rasmi (Mohd Faizal - Maybank 162012993812) dalam masa 30 minit dan berikan 6-digit OTP untuk elak baki wang anda hangus. Semak di http://my-account-verify.xyz sekarang.'
   },
   telegram_vip: {
     channel: 'telegram',
-    sender: '@Deriv_OfficialHelp_MY',
+    sender: '@OfficialSupport_MY_Help',
     message:
-      'Hi Boss! I am Senior Deriv Account Manager messaging regarding your stuck withdrawal. Good news: you also qualify for Deriv VIP Managed Pool (Guaranteed 300% profit weekly confirm tak rugi!). Reply with your Deriv login password or AnyDesk code right now so I can manually unlock instant payout to your bank!'
+      'Hi Boss! I am Senior Account Manager messaging regarding your stuck withdrawal. Good news: you also qualify for VIP Managed Pool (Guaranteed 300% profit weekly confirm tak rugi!). Reply with your login password or AnyDesk code right now so I can manually unlock instant payout to your bank!'
   },
   email_spoof: {
     channel: 'email',
-    sender: 'security-alert@deriv-account-support.com',
+    sender: 'security-alert@maybank2u-security-check.com',
     message:
-      'Dear Deriv Client, We detected an unrecognized login attempt from Kuala Lumpur. For your protection, automated withdrawals will be suspended within 2 hours unless you re-confirm your identity and API token via our priority support portal: https://auth.deriv-security-check.com/verify — Do not ignore this automated notice.'
+      'Dear Valued Customer, We detected an unrecognized login attempt from Kuala Lumpur. For your protection, your online banking and transfers will be suspended within 2 hours unless you re-confirm your identity and TAC/OTP via our priority portal: https://auth.bank-security-verify.com/login — Do not ignore this automated notice.'
   },
-  legit_deriv: {
+  legit_notice: {
     channel: 'inapp',
-    sender: 'no-reply@deriv.com',
+    sender: 'no-reply@maybank2u.com.my',
     message:
-      'Hello, your withdrawal request of USD 150.00 has been received and is being processed. You can check the live status anytime by opening deriv.com yourself and visiting Cashier > Transaction History. Reminder: Deriv Support will never ask for your password, OTP, or transfers to personal bank accounts.'
+      'Hello, your withdrawal / transfer request of RM 150.00 has been received and is being processed. You can check the live status anytime by opening the official app yourself and visiting Transaction History. Reminder: Official Support will never ask for your password, OTP/TAC, or transfers to personal bank accounts.'
   }
 };
+
+const OFFICIAL_DOMAINS = [
+  'maybank2u.com.my',
+  'cimbclicks.com.my',
+  'pbebank.com',
+  'rhbgroup.com',
+  'hlb.com.my',
+  'tngdigital.com.my',
+  'hasil.gov.my',
+  'bnm.gov.my',
+  'deriv.com'
+];
 
 const UI_COPY = {
   en: {
     ribbon:
-      'Deriv Support will <strong>NEVER</strong> DM you first on WhatsApp/Telegram, ask for your OTP/password, or request transfers to personal bank accounts.',
+      'Real Support will <strong>NEVER</strong> DM you first on WhatsApp/Telegram, ask for your OTP/TAC/password, or request transfers to personal bank accounts.',
     heroSub:
-      'Got a message claiming to be Deriv Support? Scan warning signs safely before you click, reply, or pay.',
+      'Got a message claiming to be Customer Support, your Bank, or LHDN? Scan warning signs safely before you click, reply, or pay.',
     step1Eyebrow: '[01] PASTE OR TEST MESSAGE',
     checkerHeading: 'MESSAGE & SENDER',
     presetsLabel: 'TEST REAL MY SCENARIOS (1-CLICK):',
@@ -42,8 +54,8 @@ const UI_COPY = {
     liveScanText: '● LIVE SCAN ON',
     xrayHeading: 'RED-FLAG X-RAY',
     xrayHint: 'Tap any highlighted phrase to inspect the trap',
-    dissectorTitleSpoof: 'LINK LOOKALIKE X-RAY — FAKE DOMAIN SPOTTED!',
-    dissectorTitleSafe: 'LINK DOMAIN CHECK — OFFICIAL DERIV.COM DOMAIN',
+    dissectorTitleSpoof: 'LINK LOOKALIKE X-RAY — SUSPICIOUS DOMAIN SPOTTED!',
+    dissectorTitleSafe: 'LINK DOMAIN CHECK — KNOWN OFFICIAL DOMAIN',
     radarLabel: 'MY SCAM RADAR:',
     flagsHeadingPrefix: 'WARNING SIGNS SPOTTED',
     flagsSub: 'Tap a card to spotlight in message',
@@ -51,9 +63,9 @@ const UI_COPY = {
     safeHeading: 'HOW TO CHECK SAFELY RIGHT NOW',
     safeIntro:
       'Scammers want you to panic inside their chat. Complete these 3 independent checks first:',
-    officialCardTitle: 'OFFICIAL DERIV CHECK',
+    officialCardTitle: 'OFFICIAL APP / SITE CHECK',
     officialCardBody:
-      'Type <a href="https://deriv.com" target="_blank" rel="noopener noreferrer">deriv.com</a> yourself in a new tab (never via message links) and use <strong>Live Chat</strong> inside Help Centre.',
+      'Open the <strong>official app or website</strong> yourself by typing the URL (never via message links) and use their <strong>in-app Help Centre / Live Chat</strong>.',
     myCardTitle: 'MALAYSIA SAFETY NET',
     myCardBody:
       'Given a local bank/phone number? Check <a href="https://semakmule.rmp.gov.my" target="_blank" rel="noopener noreferrer">PDRM SemakMule</a>. Already transferred money? Call <strong>NSRC 997</strong> immediately!',
@@ -62,23 +74,23 @@ const UI_COPY = {
     steps: [
       {
         title: '1. PAUSE — DO NOT REPLY, CLICK LINKS, OR SEND OTP/MONEY',
-        desc: 'Real Deriv Support will never freeze your funds on a 30-minute timer or ask for release fees.'
+        desc: 'Real banks, agencies, or support teams never freeze funds on a 30-minute timer or ask for release fees.'
       },
       {
-        title: '2. OPEN DERIV INDEPENDENTLY & ASK OFFICIAL LIVE CHAT',
-        desc: 'Close WhatsApp/Telegram. Log in via your own bookmark or official Deriv app -> tap Live Chat to verify.'
+        title: '2. OPEN THE OFFICIAL APP / WEBSITE INDEPENDENTLY',
+        desc: 'Close WhatsApp/Telegram. Open your bank/platform app directly or call the hotline on the back of your card.'
       },
       {
-        title: '3. CHECK EXACT @DERIV.COM DOMAIN & PDRM SEMAKMULE',
-        desc: 'Lookalike domains like deriv-verify.xyz are traps. Verify any Malaysian bank account on semakmule.rmp.gov.my.'
+        title: '3. CHECK EXACT DOMAIN & PDRM SEMAKMULE',
+        desc: 'Lookalike domains like bank-security-verify.com are traps. Verify any Malaysian bank account on semakmule.rmp.gov.my.'
       }
     ]
   },
   my: {
     ribbon:
-      'Weh ingat! Support Deriv <strong>TAK PERNAH</strong> PM tepi kat WhatsApp/Telegram dulu, minta OTP/password, atau suruh DuitNow masuk akaun peribadi orang!',
+      'Weh ingat! Support atau Bank sebenar <strong>TAK PERNAH</strong> PM tepi kat WhatsApp/Telegram dulu, minta OTP/TAC/password, atau suruh DuitNow masuk akaun peribadi orang!',
     heroSub:
-      'Dapat mesej kononnya "Deriv Support"? Jangan gelabah tekan link atau bank-in — scan red flag kat sini dulu!',
+      'Dapat mesej kononnya "Customer Support", Bank, atau LHDN? Jangan gelabah tekan link atau bank-in — scan red flag kat sini dulu!',
     step1Eyebrow: '[01] PASTE MESEJ ATAU TEST CONTOH SCAM',
     checkerHeading: 'DETAIL MESEJ & PENGHANTAR',
     presetsLabel: 'CUBA TAKTIK SCAMMER MALAYSIA (1-KLIK):',
@@ -89,7 +101,7 @@ const UI_COPY = {
     xrayHeading: 'X-RAY TAKTIK SCAMMER',
     xrayHint: 'Tekan mana-mana ayat merah untuk tengok kenapa benda tu pancingan scam',
     dissectorTitleSpoof: 'X-RAY LINK PALSU — JANGAN TEKAN WEH!',
-    dissectorTitleSafe: 'SEMAKAN LINK — DOMAIN RASMI DERIV.COM',
+    dissectorTitleSafe: 'SEMAKAN LINK — DOMAIN RASMI DIKENALI',
     radarLabel: 'RADAR TAKTIK SCAM MY:',
     flagsHeadingPrefix: 'RED FLAG KANTOI',
     flagsSub: 'Tekan kad bawah untuk suluh ayat dalam mesej',
@@ -97,9 +109,9 @@ const UI_COPY = {
     safeHeading: 'APA KENA BUAT SEKARANG (JANGAN PANIK!)',
     safeIntro:
       'Scammer sengaja bagi kau cuak supaya tak sempat fikir. Buat 3 langkah selamat ni sebelum buat apa-apa:',
-    officialCardTitle: 'CARA VERIFY RASMI DERIV',
+    officialCardTitle: 'CARA VERIFY RASMI',
     officialCardBody:
-      'Taip <a href="https://deriv.com" target="_blank" rel="noopener noreferrer">deriv.com</a> sendiri kat tab baru (jangan klik link mesej!). Tekan <strong>Live Chat</strong> dalam web/app rasmi untuk tanya.',
+      'Buka <strong>aplikasi/website rasmi</strong> sendiri (jangan klik link mesej!). Semak notifikasi atau tanya terus kat <strong>Live Chat / Hotline rasmi</strong>.',
     myCardTitle: 'TALIAN HAYAT SCAM MALAYSIA',
     myCardBody:
       'Dia bagi nombor akaun Maybank/CIMB/telefon? Semak kat <a href="https://semakmule.rmp.gov.my" target="_blank" rel="noopener noreferrer">SemakMule PDRM</a>. Dah terbuat transfer? Terus call <strong>NSRC 997</strong>!',
@@ -108,15 +120,15 @@ const UI_COPY = {
     steps: [
       {
         title: '1. TARIK NAFAS — JANGAN REPLY, KLIK LINK, BAGI OTP ATAU DUITNOW!',
-        desc: 'Deriv kat Cyberjaya tak pernah kutip "wang pelepasan BNM/LHDN" masuk akaun peribadi sesiapa pun.'
+        desc: 'Bank, LHDN, atau support rasmi tak pernah kutip "wang pelepasan" masuk akaun peribadi sesiapa pun.'
       },
       {
-        title: '2. TUTUP CHAT TU, BUKA APP/WEB RASMI DERIV.COM SENDIRI',
-        desc: 'Tanya terus kat Live Chat rasmi dalam website/aplikasi Deriv — itu satu-satunya tempat sahih.'
+        title: '2. TUTUP CHAT TU, BUKA APP RASMI ATAU CALL NOMBOR BELAKANG KAD',
+        desc: 'Sahkan terus melalui app rasmi bank/platform atau hubungi talian rasmi — jangan guna nombor dalam mesej tu.'
       },
       {
-        title: '3. CEK EJAAN DOMAIN @DERIV.COM & SEMAKMULE PDRM',
-        desc: 'Kalau ada sengkang pelik macam deriv-verify.xyz memang confirm scam. Cek akaun bank kat semakmule.rmp.gov.my.'
+        title: '3. CEK EJAAN DOMAIN & SEMAKMULE PDRM',
+        desc: 'Kalau ada sengkang pelik macam my-account-verify.xyz memang confirm scam. Cek akaun bank kat semakmule.rmp.gov.my.'
       }
     ]
   }
@@ -135,8 +147,8 @@ const DETECTION_RULES = [
       my: 'Minta "Bayaran Pelepasan" / Akaun Keldai (Mule Account)!'
     },
     desc: {
-      en: 'Real Deriv Support never asks you to transfer RM fees to an "agent", DuitNow, or personal bank account to unfreeze withdrawals.',
-      my: 'Deriv takkan sesekali suruh kau DuitNow RM250 masuk akaun Maybank individu ("Mohd Faizal" etc.) untuk cairkan duit. Confirm akaun keldai!'
+      en: 'Real Support or banks never ask you to transfer RM fees to an "agent", DuitNow, or personal bank account to unfreeze your money.',
+      my: 'Support atau bank sebenar takkan sesekali suruh kau DuitNow RM250 masuk akaun individu ("Mohd Faizal" etc.) untuk cairkan duit. Confirm akaun keldai!'
     }
   },
   {
@@ -150,8 +162,8 @@ const DETECTION_RULES = [
       my: 'Taktik Guna Nama BNM / LHDN Bagi Kau Cuak'
     },
     desc: {
-      en: 'Malaysian scammers frequently drop BNM or LHDN names to make fake "clearance fees" sound official and scary.',
-      my: 'Taktik paling famous scammer Malaysia: petik nama BNM atau LHDN konon akaun sangkut cukai supaya kau takut & terus bayar.'
+      en: 'Malaysian scammers frequently drop BNM, LHDN, or PDRM names to make fake "clearance fees" sound official and scary.',
+      my: 'Taktik paling famous scammer Malaysia: petik nama BNM, LHDN atau PDRM konon akaun sangkut cukai supaya kau takut & terus bayar.'
     }
   },
   {
@@ -162,12 +174,12 @@ const DETECTION_RULES = [
     regex: /\b(6-digit otp|otp|tac|login password|your password|kata laluan|api token|anydesk|teamviewer|screen\s?share|seed phrase|pin code)\b/gi,
     negativeContext: /never ask for your password,\s*otp/i,
     title: {
-      en: 'Asks for Secret Credentials, OTP, API Token, or Remote Access',
-      my: 'Minta OTP, Password, API Token atau AnyDesk!'
+      en: 'Asks for Secret Credentials, OTP/TAC, or Remote Access',
+      my: 'Minta OTP, TAC, Password, atau AnyDesk!'
     },
     desc: {
-      en: 'Deriv staff can assist with your account without ever knowing your password, 6-digit OTP, API token, or controlling your screen.',
-      my: 'Staf support sebenar TAK PERLU tahu password, nombor OTP 6-digit, API token atau masuk AnyDesk telefon kau. Bagi je benda ni, lesap terus akaun!'
+      en: 'Legitimate staff can assist you without ever knowing your password, 6-digit OTP/TAC, or controlling your screen via AnyDesk.',
+      my: 'Staf support atau bank sebenar TAK PERLU tahu password, nombor OTP/TAC 6-digit, atau masuk AnyDesk telefon kau. Bagi je benda ni, lesap terus duit!'
     }
   },
   {
@@ -181,8 +193,8 @@ const DETECTION_RULES = [
       my: 'Gertak "Akaun Beku / Duit Hangus Dalam 30 Minit"'
     },
     desc: {
-      en: 'Countdowns ("within 30 mins / 2 hours or lose your money") are designed to stop you from taking 2 minutes to verify via Deriv Live Chat.',
-      my: 'Scammer sengaja letak masa 30 minit / 2 jam konon duit hangus supaya kau gelabah dan tak sempat semak kat Live Chat rasmi Deriv.'
+      en: 'Countdowns ("within 30 mins / 2 hours or lose your money") are designed to stop you from taking 2 minutes to verify via official channels.',
+      my: 'Scammer sengaja letak masa 30 minit / 2 jam konon duit hangus supaya kau gelabah dan tak sempat semak kat app/hotline rasmi.'
     }
   },
   {
@@ -196,8 +208,8 @@ const DETECTION_RULES = [
       my: 'Janji Manis "VIP Pool Confirm Tak Rugi 300%"'
     },
     desc: {
-      en: 'Deriv never runs "VIP Managed Pools" offering guaranteed weekly returns or asks Account Managers to trade on your behalf.',
-      my: 'Deriv takde buat group "Cikgu VIP Pool untung 300% seminggu confirm tak rugi". Semua trading ada risiko — ni taktik pelaburan palsu!'
+      en: 'No legitimate financial platform runs Telegram "VIP Managed Pools" promising guaranteed weekly returns.',
+      my: 'Mana ada pelaburan sah buat group "Cikgu VIP Pool untung 300% seminggu confirm tak rugi". Semua ni taktik scam pelaburan palsu!'
     }
   }
 ];
@@ -230,6 +242,7 @@ const verdictPill = document.getElementById('verdictPill');
 const verdictHeading = document.getElementById('verdictHeading');
 const verdictSummary = document.getElementById('verdictSummary');
 const radarTags = document.getElementById('radarTags');
+const flagCount = document.getElementById('flagCount');
 const flagsList = document.getElementById('flagsList');
 const safeStepsList = document.getElementById('safeStepsList');
 const checklistProgress = document.getElementById('checklistProgress');
@@ -246,6 +259,10 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+function isKnownOfficialDomain(host) {
+  return OFFICIAL_DOMAINS.some((d) => host === d || host.endsWith('.' + d));
+}
+
 function inspectUrls(text) {
   const urlRegex = /\b((?:https?:\/\/(?:[a-z0-9-]+\.)+[a-z]{2,12}|(?:[a-z0-9-]+\.)+(?:com|xyz|my|net|org|io|co|app|online|site|top|vip|link|click|live|info|me|cc|gov))(?:\/[^\s]*)?)/gi;
   const results = [];
@@ -255,16 +272,16 @@ function inspectUrls(text) {
     const matchEnd = match.index + raw.length;
     const withoutProto = raw.replace(/^https?:\/\//i, '');
     const host = withoutProto.split('/')[0].toLowerCase();
-    const isOfficialDeriv = host === 'deriv.com' || host.endsWith('.deriv.com');
-    const mentionsDeriv = host.includes('deriv') && !isOfficialDeriv;
+    const isOfficial = isKnownOfficialDomain(host);
+    const looksLikeSpoof = !isOfficial && /(bank|maybank|cimb|tng|lhdn|bnm|verify|secure|login|support|deriv|account)/.test(host);
 
     results.push({
       raw,
       host,
       start: match.index,
       end: matchEnd,
-      isOfficialDeriv,
-      mentionsDeriv
+      isOfficial,
+      looksLikeSpoof
     });
   }
   return results;
@@ -285,11 +302,11 @@ function inspectChannelAndSender(channel, sender) {
       radarTag: { en: `Fake ${channelName} Support`, my: `Scammer menyamar kat ${channelName}` },
       title: {
         en: `Unsolicited "Support" DM on ${channelName}`,
-        my: `Menyamar Jadi Support Deriv kat ${channelName}`
+        my: `Menyamar Jadi Support / Bank kat ${channelName}`
       },
       desc: {
-        en: `Deriv Customer Support only assists through official Live Chat on deriv.com / the Deriv app — never random +60 numbers or @handles on ${channelName}.`,
-        my: `Support Deriv yang betul hanya jawab dalam Live Chat kat website/app rasmi deriv.com — diorang takkan PM kau guna nombor +60 personal atau akaun ${channelName}!`
+        en: `Real banks and official support teams do not DM you out of nowhere from random +60 numbers or @handles on ${channelName}.`,
+        my: `Bank atau support yang betul takkan tiba-tiba PM kau guna nombor +60 personal atau akaun ${channelName} untuk selesai masalah akaun!`
       }
     });
   }
@@ -297,7 +314,7 @@ function inspectChannelAndSender(channel, sender) {
   if (trimmed.includes('@') && !trimmed.startsWith('@')) {
     const emailParts = lower.split('@');
     const domain = emailParts[emailParts.length - 1].replace(/[^a-z0-9.-]/g, '');
-    if (domain && domain !== 'deriv.com' && !domain.endsWith('.deriv.com')) {
+    if (domain && !isKnownOfficialDomain(domain)) {
       flags.push({
         id: 'spoof_sender_email',
         severity: 'high',
@@ -305,12 +322,12 @@ function inspectChannelAndSender(channel, sender) {
         quote: trimmed,
         radarTag: { en: 'Lookalike Email Domain', my: 'Domain Emel Tiruan' },
         title: {
-          en: `Fake Sender Email Domain (@${domain})`,
-          my: `Alamat Emel Menyamar (@${domain} bukan @deriv.com!)`
+          en: `Suspicious / Unverified Email Domain (@${domain})`,
+          my: `Alamat Emel Mencurigakan (@${domain})`
         },
         desc: {
-          en: `Scammers add extra words like "@${domain}" to look convincing at a quick glance. Real Deriv emails strictly end with "@deriv.com".`,
-          my: `Sekali imbas nampak macam betul sebab ada perkataan "deriv", tapi "@${domain}" bukan milik Deriv! Emel rasmi mesti berakhir tepat dengan "@deriv.com".`
+          en: `Scammers register lookalike domains like "@${domain}" to look official at a quick glance. Always check the exact official domain.`,
+          my: `Sekali imbas nampak macam betul, tapi "@${domain}" bukan domain rasmi! Scammer suka tambah perkataan "-security" atau "-check" untuk tipu orang.`
         }
       });
     }
@@ -336,33 +353,33 @@ function analyzeAll() {
 
   const urlFindings = inspectUrls(text);
   urlFindings.forEach((u, idx) => {
-    if (!u.isOfficialDeriv) {
+    if (!u.isOfficial) {
       const flagId = `suspicious_url_${idx}`;
       spans.push({ start: u.start, end: u.end, flagId, severity: 'high' });
-      const radar = u.mentionsDeriv
-        ? { en: 'Lookalike Phishing Link', my: 'Link Phishing Menyamar Deriv' }
+      const radar = u.looksLikeSpoof
+        ? { en: 'Lookalike Phishing Link', my: 'Link Phishing Menyamar' }
         : { en: 'External Unverified Link', my: 'Link Luar Mencurigakan' };
       radarSet.set('url_spoof', radar);
       detectedFlags.push({
         id: flagId,
         severity: 'high',
-        weight: u.mentionsDeriv ? 42 : 26,
+        weight: u.looksLikeSpoof ? 42 : 26,
         quote: u.raw,
         title: {
-          en: u.mentionsDeriv
+          en: u.looksLikeSpoof
             ? `Lookalike Trap Domain ("${u.host}")`
             : `Unverified External Link ("${u.host}")`,
-          my: u.mentionsDeriv
-            ? `Link Menyamar Nama Deriv ("${u.host}")!`
+          my: u.looksLikeSpoof
+            ? `Link Menyamar ("${u.host}")!`
             : `Link Luar Tak Sahih ("${u.host}")`
         },
         desc: {
-          en: u.mentionsDeriv
-            ? `Notice how "${u.host}" puts "deriv-" in front to trick your eyes, but the real website owner is NOT deriv.com! Never enter login details here.`
-            : `This link goes to "${u.host}", not deriv.com. Always type deriv.com directly in your browser instead of tapping message links.`,
-          my: u.mentionsDeriv
-            ? `Tengok betul-betul "${u.host}" — dia letak perkataan "deriv-" kat depan nak kaburkan mata kau, padahal ni website palsu untuk curi login!`
-            : `Link ni bawa ke "${u.host}", bukan deriv.com. Jangan klik — taip deriv.com sendiri kat browser.`
+          en: u.looksLikeSpoof
+            ? `Notice how "${u.host}" uses official-sounding words to trick your eyes, but it is NOT an official bank/agency domain. Never log in here.`
+            : `This link goes to "${u.host}". Always open the official app or type the official URL yourself instead of tapping message links.`,
+          my: u.looksLikeSpoof
+            ? `Tengok betul-betul "${u.host}" — dia guna perkataan macam "verify" atau nama bank nak kaburkan mata kau, padahal ni website palsu untuk curi login!`
+            : `Link ni bawa ke "${u.host}". Jangan klik — buka app rasmi atau taip sendiri alamat web rasmi kat browser.`
         }
       });
     }
@@ -455,51 +472,49 @@ function renderAnalysis() {
     telegram: 'TELEGRAM',
     email: 'EMAIL',
     sms: 'SMS',
-    inapp: 'DERIV APP'
+    inapp: 'OFFICIAL APP'
   };
   const chName = channelLabels[channel] || 'MESSAGE';
   chatChannelBadge.textContent = chName;
   chatContactName.textContent = sender.trim() || (currentTone === 'en' ? 'UNKNOWN SENDER' : 'PENGHANTAR TAK DIKENALI');
-  chatAvatar.textContent = channel === 'inapp' ? 'D' : '?';
+  chatAvatar.textContent = channel === 'inapp' ? 'OK' : '?';
 
-  const isOfficialSender =
-    channel === 'inapp' &&
-    (!sender.trim() || sender.trim().toLowerCase().endsWith('@deriv.com'));
+  const isOfficialSender = channel === 'inapp' && detectedFlags.length === 0;
 
-  if (isOfficialSender && detectedFlags.length === 0) {
-    chatContactSub.textContent = currentTone === 'en' ? 'VERIFIED OFFICIAL CHANNEL' : 'SALURAN RASMI DERIV';
+  if (isOfficialSender) {
+    chatContactSub.textContent = currentTone === 'en' ? 'VERIFIED OFFICIAL APP' : 'SALURAN APLIKASI RASMI';
     unverifiedBanner.className = 'chat-unverified-banner safe-banner';
     unverifiedBanner.textContent =
       currentTone === 'en'
-        ? '[OK] MATCHES OFFICIAL DERIV COMMUNICATION PATTERNS.'
-        : '[OK] IKUT CIRI MESEJ RASMI DERIV (TIADA MINTA OTP/AKAUN PERIBADI).';
+        ? '[OK] MATCHES OFFICIAL COMMUNICATION PATTERNS (NO OTP OR PERSONAL TRANSFER REQUESTS).'
+        : '[OK] IKUT CIRI MESEJ RASMI (TIADA MINTA OTP/TAC ATAU AKAUN PERIBADI).';
   } else {
-    chatContactSub.textContent = currentTone === 'en' ? `${chName} • UNVERIFIED EXTERNAL` : `${chName} • BUKAN LIVE CHAT RASMI`;
+    chatContactSub.textContent = currentTone === 'en' ? `${chName} • UNVERIFIED EXTERNAL` : `${chName} • BUKAN APP RASMI`;
     unverifiedBanner.className = 'chat-unverified-banner';
     unverifiedBanner.textContent =
       currentTone === 'en'
-        ? '[!] ANYONE CAN USE A DERIV LOGO OR NAME ON WHATSAPP, TELEGRAM, OR FAKE EMAILS.'
-        : '[!] SESIAPA PUN BOLEH GUNA LOGO DERIV KAT WHATSAPP, TELEGRAM, ATAU EMEL PALSU!';
+        ? '[!] ANYONE CAN USE A BANK OR SUPPORT LOGO ON WHATSAPP, TELEGRAM, OR FAKE EMAILS.'
+        : '[!] SESIAPA PUN BOLEH GUNA LOGO BANK / SUPPORT KAT WHATSAPP, TELEGRAM, ATAU EMEL PALSU!';
   }
 
   highlightedOutput.innerHTML = renderHighlightedMessage(text, cleanSpans);
 
   if (urlFindings.length > 0) {
     domainDissector.classList.remove('hidden');
-    const hasSpoof = urlFindings.some((u) => !u.isOfficialDeriv);
+    const hasSpoof = urlFindings.some((u) => !u.isOfficial);
     domainDissector.classList.toggle('safe-dissector', !hasSpoof);
     dissectorTitle.textContent = hasSpoof ? copy.dissectorTitleSpoof : copy.dissectorTitleSafe;
 
     dissectorList.innerHTML = urlFindings
       .map((u) => {
-        if (u.isOfficialDeriv) {
+        if (u.isOfficial) {
           return `
             <div class="dissector-item">
               <div class="url-mono"><span class="url-real-host legit-host">${escapeHtml(u.host)}</span></div>
               <div>${
                 currentTone === 'en'
-                  ? '[OK] Genuine <strong>deriv.com</strong> domain. Still safest to type deriv.com directly.'
-                  : '[OK] Memang domain rasmi <strong>deriv.com</strong>. Paling selamat taip deriv.com sendiri kat browser.'
+                  ? '[OK] Known official Malaysian/platform domain. Still safest to open the official app directly.'
+                  : '[OK] Memang domain rasmi yang dikenali. Paling selamat tetap buka aplikasi rasmi sendiri!'
               }</div>
             </div>
           `;
@@ -507,12 +522,12 @@ function renderAnalysis() {
         return `
           <div class="dissector-item">
             <div class="url-mono">
-              ${escapeHtml(u.raw.replace(u.host, ''))} -> REAL OWNER: <span class="url-real-host">${escapeHtml(u.host)}</span> (NOT DERIV.COM!)
+              ${escapeHtml(u.raw.replace(u.host, ''))} -> REAL DOMAIN: <span class="url-real-host">${escapeHtml(u.host)}</span> (UNVERIFIED!)
             </div>
             <div>${
               currentTone === 'en'
-                ? '[!] Scammers add "deriv-" in front to fool mobile screens. DO NOT open this link.'
-                : '[!] Taktik kaburkan mata! Dia tambah "deriv-" kat depan padahal website ni BUKAN deriv.com.'
+                ? '[!] Scammers use extra words or .xyz/.com lookalikes to fool mobile screens. DO NOT open this link.'
+                : '[!] Taktik kaburkan mata kat skrin telefon! Domain pelik atau ada sengkang tambahan macam ni BUKAN web rasmi — jangan tekan!'
             }</div>
           </div>
         `;
@@ -538,8 +553,8 @@ function renderAnalysis() {
       currentTone === 'en' ? 'STOP! STRONG IMPERSONATION SIGNS' : 'BERHENTI! BANYAK TAKTIK SCAMMER';
     verdictSummary.textContent =
       currentTone === 'en'
-        ? 'This message combines urgency, fake links, or fee/credential traps that real Deriv Support never uses.'
-        : 'Mesej ni guna taktik gertak, link menyamar, atau minta OTP/duit pelepasan — Deriv sebenar TAK PERNAH buat macam ni!';
+        ? 'This message combines urgency, fake links, or fee/OTP traps that real support or banks never use.'
+        : 'Mesej ni guna taktik gertak, link menyamar, atau minta OTP/duit pelepasan — pihak rasmi TAK PERNAH buat macam ni!';
   } else if (riskTier === 'medium') {
     verdictPill.textContent =
       currentTone === 'en' ? 'SUSPICIOUS — VERIFY FIRST' : 'MENCURIGAKAN — SEMAK DULU';
@@ -547,8 +562,8 @@ function renderAnalysis() {
       currentTone === 'en' ? 'CAUTION: WARNING SIGNS FOUND' : 'HATI-HATI: ADA TANDA MERAGUKAN';
     verdictSummary.textContent =
       currentTone === 'en'
-        ? 'Do not click links or reply here. Open deriv.com yourself and confirm with Official Live Chat.'
-        : 'Jangan terus percaya. Buka aplikasi/web deriv.com sendiri dan tanya kat Live Chat rasmi.';
+        ? 'Do not click links or reply here. Open the official app yourself or call the official hotline.'
+        : 'Jangan terus percaya. Buka aplikasi rasmi sendiri atau call nombor hotline kat belakang kad bank.';
   } else {
     verdictPill.textContent =
       currentTone === 'en' ? 'NO OBVIOUS SCAM TRAPS' : 'TIADA TAKTIK SCAM KETARA';
@@ -556,8 +571,8 @@ function renderAnalysis() {
       currentTone === 'en' ? 'LOOKS CONSISTENT — CHECK SAFELY' : 'NAMPAK NORMAL — TETAP BERINGAT';
     verdictSummary.textContent =
       currentTone === 'en'
-        ? 'No pressure timers, fake domains, or OTP/payment requests spotted. Still log in directly via deriv.com.'
-        : 'Takde minta OTP, akaun keldai, atau link pelik. Pun begitu, sentiasa login sendiri melalui deriv.com.';
+        ? 'No pressure timers, fake domains, or OTP/payment requests spotted. Still verify directly inside the official app.'
+        : 'Takde minta OTP, akaun keldai, atau link pelik. Pun begitu, sentiasa semak terus dalam aplikasi rasmi.';
   }
 
   if (rTags.length > 0) {
@@ -585,8 +600,8 @@ function renderAnalysis() {
         </div>
         <p class="flag-desc">${
           currentTone === 'en'
-            ? 'Notice how genuine Deriv notifications tell you to check inside your own app and remind you never to share OTPs or passwords.'
-            : 'Perasan tak mesej Deriv yang betul cuma suruh kau semak sendiri dalam app & siap ingatkan jangan kongsi OTP atau password.'
+            ? 'Notice how genuine notifications tell you to check inside your own app and remind you never to share OTPs or passwords.'
+            : 'Perasan tak mesej yang betul cuma suruh kau semak sendiri dalam app & siap ingatkan jangan kongsi OTP atau password.'
         }</p>
       </div>
     `;
@@ -757,11 +772,11 @@ copyReportBtn.addEventListener('click', async () => {
   const summary =
     currentTone === 'en'
       ? `SCAMMER HELEPP: SCAM SHIELD FOR MY\nSender: ${sender || 'Unknown'} (${channel})\nRisk Score: ${score}/100\n${
-          topReasons || '- Always verify directly via deriv.com Official Live Chat.'
-        }\nSafe Rule: Never share OTP/passwords or transfer fees to personal accounts. MY Scam Hotline: NSRC 997.`
+          topReasons || '- Always verify directly via official apps or hotlines.'
+        }\nSafe Rule: Never share OTP/TAC/passwords or transfer fees to personal accounts. MY Scam Hotline: NSRC 997.`
       : `SCAMMER HELEPP: SCAM SHIELD FOR MY\nPenghantar: ${sender || 'Tak dikenali'} (${channel})\nSkor Risiko: ${score}/100\n${
-          topReasons || '- Sentiasa sahkan terus kat Live Chat rasmi deriv.com.'
-        }\nIngat: Jangan bagi OTP/password atau DuitNow ke akaun peribadi! Kalau dah terkena, terus call NSRC 997.`;
+          topReasons || '- Sentiasa sahkan terus kat aplikasi atau hotline rasmi.'
+        }\nIngat: Jangan bagi OTP/TAC/password atau DuitNow ke akaun peribadi! Kalau dah terkena, terus call NSRC 997.`;
 
   try {
     await navigator.clipboard.writeText(summary);
@@ -780,9 +795,7 @@ document.querySelectorAll('.dock-btn').forEach((btn) => {
     document.querySelectorAll('.dock-btn').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
     const target = document.getElementById(btn.dataset.jump);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
