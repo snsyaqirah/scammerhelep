@@ -756,10 +756,10 @@ copyReportBtn.addEventListener('click', async () => {
 
   const summary =
     currentTone === 'en'
-      ? `DERIV SCAMSHIELD MY CHECK\nSender: ${sender || 'Unknown'} (${channel})\nRisk Score: ${score}/100\n${
+      ? `SCAMMER HELEPP: SCAM SHIELD FOR MY\nSender: ${sender || 'Unknown'} (${channel})\nRisk Score: ${score}/100\n${
           topReasons || '- Always verify directly via deriv.com Official Live Chat.'
         }\nSafe Rule: Never share OTP/passwords or transfer fees to personal accounts. MY Scam Hotline: NSRC 997.`
-      : `SEMAKAN DERIV SCAMSHIELD MY\nPenghantar: ${sender || 'Tak dikenali'} (${channel})\nSkor Risiko: ${score}/100\n${
+      : `SCAMMER HELEPP: SCAM SHIELD FOR MY\nPenghantar: ${sender || 'Tak dikenali'} (${channel})\nSkor Risiko: ${score}/100\n${
           topReasons || '- Sentiasa sahkan terus kat Live Chat rasmi deriv.com.'
         }\nIngat: Jangan bagi OTP/password atau DuitNow ke akaun peribadi! Kalau dah terkena, terus call NSRC 997.`;
 

@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light only;
   --paper: #f4f1ea;
   --paper-alt: #ebe6db;
   --white: #ffffff;
@@ -62,10 +63,10 @@ a:hover {
   padding: 0 20px;
 }
 
-/* Top Warning Ticker */
+/* Top Warning Ticker (Light Mode) */
 .trust-ribbon {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--white);
+  color: var(--ink);
   border-bottom: var(--border);
   padding: 10px 0;
   font-size: 0.84rem;
@@ -85,7 +86,7 @@ a:hover {
   background: var(--accent);
   color: var(--white);
   padding: 2px 8px;
-  border: 2px solid var(--white);
+  border: 2px solid var(--ink);
   flex-shrink: 0;
 }
 
@@ -116,12 +117,12 @@ a:hover {
 }
 
 .brand-stamp {
-  width: 52px;
-  height: 52px;
-  background: var(--ink);
-  color: var(--paper);
+  width: 54px;
+  height: 54px;
+  background: var(--white);
+  color: var(--ink);
   font-family: 'Archivo Black', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -504,15 +505,15 @@ textarea:focus {
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  background: var(--ink);
-  color: var(--white);
+  background: var(--white);
+  color: var(--ink);
   border-bottom: var(--border-thin);
 }
 
 .chat-avatar {
   width: 34px;
   height: 34px;
-  border: 2px solid var(--white);
+  border: 2px solid var(--ink);
   background: var(--accent);
   color: var(--white);
   font-family: 'Archivo Black', sans-serif;
@@ -539,17 +540,17 @@ textarea:focus {
 .chat-contact-sub {
   font-family: 'Space Mono', monospace;
   font-size: 0.68rem;
-  color: #d4d4d4;
+  color: var(--ink-soft);
 }
 
 .channel-badge {
   font-family: 'Space Mono', monospace;
   font-size: 0.68rem;
   font-weight: 700;
-  background: var(--white);
+  background: var(--paper);
   color: var(--ink);
   padding: 3px 7px;
-  border: 2px solid var(--white);
+  border: 2px solid var(--ink);
   flex-shrink: 0;
 }
 
@@ -816,8 +817,9 @@ textarea:focus {
   font-size: 0.7rem;
   font-weight: 700;
   padding: 3px 8px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
 }
 
 .radar-tag.clean-tag {
@@ -1060,7 +1062,7 @@ textarea:focus {
     z-index: 100;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: var(--ink);
+    background: var(--white);
     border-top: var(--border);
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -1069,8 +1071,8 @@ textarea:focus {
     font-family: 'Space Mono', monospace;
     font-size: 0.74rem;
     font-weight: 700;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--white);
+    color: var(--ink);
     border: none;
     padding: 13px 6px;
     min-height: 52px;
@@ -1082,7 +1084,7 @@ textarea:focus {
   }
 
   .dock-btn + .dock-btn {
-    border-left: 2px solid #333;
+    border-left: var(--border-thin);
   }
 
   .dock-btn.active {

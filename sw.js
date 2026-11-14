@@ -1,4 +1,4 @@
-const CACHE_NAME = 'scamshield-my-v1';
+const CACHE_NAME = 'scammer-helepp-v2';
 const ASSETS = [
   './',
   './index.html',
