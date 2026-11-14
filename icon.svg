@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#f4f1ea"/>
+  <rect x="44" y="44" width="424" height="424" fill="#0a0a0a"/>
+  <rect x="28" y="28" width="424" height="424" fill="#ffffff" stroke="#0a0a0a" stroke-width="20"/>
+  <rect x="76" y="76" width="328" height="108" fill="#ff2d2d" stroke="#0a0a0a" stroke-width="14"/>
+  <text x="240" y="152" font-family="Arial Black, Impact, sans-serif" font-size="68" font-weight="900" fill="#ffffff" text-anchor="middle">SCAM</text>
+  <text x="240" y="302" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" fill="#0a0a0a" text-anchor="middle">SHIELD</text>
+  <rect x="76" y="340" width="328" height="64" fill="#0a0a0a"/>
+  <text x="240" y="388" font-family="monospace" font-size="42" font-weight="700" fill="#f4f1ea" text-anchor="middle">MY // DERIV</text>
+</svg>

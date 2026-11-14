@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>DERIV SCAMSHIELD MY — Support Message Checker</title>
+
+  <!-- PWA & Native-App Mobile Meta -->
+  <meta name="theme-color" content="#f4f1ea" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ScamShield MY" />
+  <meta name="description" content="Check suspicious WhatsApp, Telegram, SMS, and email messages claiming to be Deriv Support before you click, reply, or pay." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+  <!-- Neo-Brutalist Typography: Archivo Black + Archivo + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Warning Ticker -->
+  <div class="trust-ribbon">
+    <div class="container ribbon-inner">
+      <span class="ribbon-tag">RULE #01</span>
+      <span id="ribbonText">
+        Deriv Support will <strong>NEVER</strong> DM you first on WhatsApp/Telegram, ask for your OTP/password, or request transfers to personal bank accounts.
+      </span>
+    </div>
+  </div>
+
+  <!-- Brutalist Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <div class="brand-stamp" aria-hidden="true">D//</div>
+          <div>
+            <h1>SCAMSHIELD <span class="hero-accent">MY</span></h1>
+            <p class="brand-meta">DERIV SUPPORT MESSAGE VERIFIER • CHALLENGE 03 • PWA</p>
+          </div>
+        </div>
+        <p class="brand-sub" id="heroSub">
+          Got a message claiming to be Deriv Support? Scan warning signs safely before you click, reply, or pay.
+        </p>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="install-btn hidden" id="installAppBtn">
+          + INSTALL APP
+        </button>
+        <div class="tone-toggle" role="group" aria-label="Explanation Tone">
+          <button type="button" class="tone-btn active" data-tone="en" id="toneEnBtn">
+            EN // CLEAR
+          </button>
+          <button type="button" class="tone-btn" data-tone="my" id="toneMyBtn">
+            MY // KAWAN MODE
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Asymmetric Grid -->
+  <main class="container main-grid">
+    <!-- LEFT COLUMN: INPUT + INTERACTIVE X-RAY -->
+    <section class="brutal-card input-panel" id="sectionInput" aria-labelledby="checkerHeading">
+      <div class="card-head">
+        <div>
+          <span class="mono-eyebrow" id="step1Eyebrow">[01] PASTE OR TEST MESSAGE</span>
+          <h2 id="checkerHeading">MESSAGE &amp; SENDER</h2>
+        </div>
+        <button type="button" class="brutal-btn small-btn" id="clearBtn">RESET</button>
+      </div>
+
+      <!-- 1-Click Malaysian Scenarios -->
+      <div class="presets-box">
+        <span class="mono-label" id="presetsLabel">TEST REAL MY SCENARIOS (1-CLICK):</span>
+        <div class="preset-chips" id="presetChips">
+          <button type="button" class="chip active" data-preset="whatsapp_mule">
+            [!] WHATSAPP BNM/DUITNOW
+          </button>
+          <button type="button" class="chip" data-preset="telegram_vip">
+            [!] TELEGRAM VIP SUPPORT
+          </button>
+          <button type="button" class="chip" data-preset="email_spoof">
+            [?] EMAIL DOMAIN SPOOF
+          </button>
+          <button type="button" class="chip chip-safe-opt" data-preset="legit_deriv">
+            [OK] REAL DERIV NOTICE
+          </button>
+        </div>
+      </div>
+
+      <!-- Channel + Sender -->
+      <div class="meta-inputs">
+        <div class="field-group">
+          <label for="channelSelect" id="channelLabel">CHANNEL</label>
+          <select id="channelSelect">
+            <option value="whatsapp">WhatsApp DM</option>
+            <option value="telegram">Telegram DM</option>
+            <option value="email">Email</option>
+            <option value="sms">SMS / Telco</option>
+            <option value="inapp">Official Deriv App</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="senderInput" id="senderLabel">SENDER NUMBER / @HANDLE / EMAIL</label>
+          <input
+            type="text"
+            id="senderInput"
+            placeholder="e.g. +60 11-3948 8291 or @DerivHelp_MY"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Message Textarea -->
+      <div class="field-group">
+        <div class="label-row">
+          <label for="messageInput" id="messageLabel">SUSPICIOUS MESSAGE TEXT</label>
+          <span class="live-tag" id="liveScanText">● LIVE SCAN ON</span>
+        </div>
+        <textarea
+          id="messageInput"
+          rows="5"
+          placeholder="Paste the exact WhatsApp, Telegram, SMS, or email message here..."
+        ></textarea>
+      </div>
+
+      <!-- Interactive X-Ray / Chat Simulator -->
+      <div class="xray-block">
+        <div class="xray-toolbar">
+          <div>
+            <h3 id="xrayHeading">RED-FLAG X-RAY</h3>
+            <span class="mono-hint" id="xrayHint">Tap any highlighted phrase to inspect the trap</span>
+          </div>
+          <div class="view-switch" role="group" aria-label="Preview Mode">
+            <button type="button" class="view-btn active" data-view="chat" id="viewChatBtn">
+              CHAT VIEW
+            </button>
+            <button type="button" class="view-btn" data-view="xray" id="viewXrayBtn">
+              RAW X-RAY
+            </button>
+          </div>
+        </div>
+
+        <div id="previewContainer" class="preview-frame mode-chat channel-whatsapp">
+          <div class="chat-sim-header">
+            <div class="chat-avatar" id="chatAvatar">?</div>
+            <div class="chat-contact-meta">
+              <div class="chat-contact-name" id="chatContactName">+60 11-3948 8291</div>
+              <div class="chat-contact-sub" id="chatContactSub">WhatsApp • Unverified Contact</div>
+            </div>
+            <span class="channel-badge" id="chatChannelBadge">WHATSAPP</span>
+          </div>
+
+          <div class="chat-unverified-banner" id="unverifiedBanner">
+            ! SENDER IS EXTERNAL AND NOT VERIFIED INSIDE THE DERIV APP.
+          </div>
+
+          <div class="message-bubble-wrap">
+            <div class="message-bubble" id="highlightedOutput" aria-live="polite"></div>
+            <div class="bubble-timestamp">13:34 • DELIVERED</div>
+          </div>
+        </div>
+
+        <!-- Link Lookalike Dissector -->
+        <div class="domain-dissector hidden" id="domainDissector">
+          <div class="dissector-header">
+            <strong id="dissectorTitle">LINK LOOKALIKE X-RAY (DO NOT CLICK)</strong>
+          </div>
+          <div id="dissectorList" class="dissector-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: RISK VERDICT + FLAGS + SAFE CHECKLIST -->
+    <section class="right-stack" id="sectionVerdict" aria-labelledby="verdictHeading">
+      <!-- Risk Verdict Block -->
+      <div class="brutal-card verdict-card risk-high" id="verdictCard">
+        <div class="verdict-grid">
+          <div class="score-box">
+            <span class="score-label">RISK SCORE</span>
+            <div class="score-big">
+              <span id="scoreNum">96</span><span class="score-slash">/100</span>
+            </div>
+            <div class="score-bar-track">
+              <div class="score-bar-fill" id="scoreBarFill" style="width: 96%;"></div>
+            </div>
+          </div>
+
+          <div class="verdict-copy">
+            <span class="verdict-pill" id="verdictPill">HIGH SCAM RISK — DO NOT ACT</span>
+            <h2 id="verdictHeading">STOP! STRONG IMPERSONATION SIGNS</h2>
+            <p id="verdictSummary">
+              This message uses pressure and payment traps that real Deriv Support never uses.
+            </p>
+          </div>
+        </div>
+
+        <div class="radar-strip">
+          <span class="radar-label" id="radarLabel">MY SCAM RADAR:</span>
+          <div class="radar-tags" id="radarTags"></div>
+        </div>
+      </div>
+
+      <!-- Warning Signs Breakdown -->
+      <div class="brutal-card flags-card">
+        <div class="card-head compact-head">
+          <h3 id="flagsHeading">WARNING SIGNS SPOTTED (<span id="flagCount">0</span>)</h3>
+          <span class="mono-hint" id="flagsSub">Tap a card to spotlight in message</span>
+        </div>
+        <div class="flags-list" id="flagsList"></div>
+      </div>
+
+      <!-- STEP 2: HOW TO CHECK SAFELY -->
+      <div class="brutal-card safe-card" id="sectionSafe">
+        <div class="safe-header">
+          <div>
+            <span class="mono-eyebrow" id="step2Eyebrow">[02] VERIFY SAFELY BEFORE ACTING</span>
+            <h3 id="safeHeading">HOW TO CHECK SAFELY RIGHT NOW</h3>
+          </div>
+          <span class="progress-pill" id="checklistProgress">0 / 3 DONE</span>
+        </div>
+        <p class="safe-intro" id="safeIntro">
+          Scammers want you to panic inside their chat. Complete these 3 independent checks first:
+        </p>
+
+        <div class="safe-steps" id="safeStepsList"></div>
+
+        <div class="action-cards-grid">
+          <div class="mini-box">
+            <div class="mini-title" id="officialCardTitle">OFFICIAL DERIV CHECK</div>
+            <p id="officialCardBody">
+              Type <a href="https://deriv.com" target="_blank" rel="noopener noreferrer">deriv.com</a> yourself in a new tab (never via message links) and use <strong>Live Chat</strong> inside Help Centre.
+            </p>
+            <div class="tag-row">
+              <span class="mono-chip">@deriv.com</span>
+              <span class="mono-chip">In-App Live Chat</span>
+            </div>
+          </div>
+
+          <div class="mini-box">
+            <div class="mini-title" id="myCardTitle">MALAYSIA SAFETY NET</div>
+            <p id="myCardBody">
+              Given a local bank/phone number? Check <a href="https://semakmule.rmp.gov.my" target="_blank" rel="noopener noreferrer">PDRM SemakMule</a>. Already transferred money? Call <strong>NSRC 997</strong> immediately!
+            </p>
+            <div class="tag-row">
+              <span class="mono-chip hot-chip">CALL 997 (NSRC)</span>
+              <span class="mono-chip">semakmule.rmp.gov.my</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="share-bar">
+          <button type="button" class="brutal-btn cta-btn" id="copyReportBtn">
+            <span id="copyBtnText">COPY SAFETY SUMMARY TO WARN FRIENDS</span>
+          </button>
+          <span class="copy-toast" id="copyToast" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p id="footerNote">
+      DERIV SCAMSHIELD MY // Runs 100% locally in your browser &amp; offline as a PWA. Never paste real passwords or OTPs anywhere.
+    </p>
+  </footer>
+
+  <!-- Mobile Native-App Bottom Bar -->
+  <nav class="mobile-dock" aria-label="Quick Mobile Navigation">
+    <button type="button" class="dock-btn active" data-jump="sectionInput">
+      <span>[01]</span> SCANNER
+    </button>
+    <button type="button" class="dock-btn" data-jump="sectionVerdict">
+      <span>[!]</span> VERDICT
+    </button>
+    <button type="button" class="dock-btn" data-jump="sectionSafe">
+      <span>[✓]</span> CHECKLIST
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
