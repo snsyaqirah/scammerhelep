@@ -1,4 +1,4 @@
-const CACHE_NAME = 'scammer-helepp-v2';
+const CACHE_NAME = 'scammer-helepp-v3';
 const ASSETS = [
   './',
   './index.html',
